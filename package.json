@@ -1,9 +1,0 @@
-{
-  "name": "studentvoice",
-  "version": "1.0.0",
-  "description": "StudentVoice - a course feedback portal built with vanilla HTML, CSS and JavaScript.",
-  "private": true,
-  "scripts": {
-    "test": "node scripts/validate.js"
-  }
-}

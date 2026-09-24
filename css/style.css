@@ -51,6 +51,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary)
 .submit:hover{background:var(--primary-dark)}
 .submit:focus-visible{outline:3px solid rgba(44,58,148,.4);outline-offset:2px}
 .confirmation{margin-bottom:18px;padding:12px 14px;background:var(--ok-soft);border:1px solid #b6dfc8;border-radius:8px;color:var(--ok);font-size:.94rem}
+.alert{margin-bottom:18px;padding:12px 14px;background:var(--danger-soft);border:1px solid #efc1bd;border-radius:8px;color:var(--danger);font-size:.94rem}
 
 .list-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .summary{margin:4px 0 0;color:var(--muted);font-size:.9rem}
@@ -67,6 +68,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary)
 .stars-out{color:var(--star);font-size:1.05rem;letter-spacing:1px;white-space:nowrap}
 .card-course{margin:12px 0 6px;font-weight:600;font-size:.95rem}
 .card-text{margin:0 0 12px;white-space:pre-wrap;word-break:break-word}
+.meta{margin:0 0 12px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.meta li{padding:3px 10px;background:var(--soft);color:var(--primary-dark);border-radius:999px;font-size:.78rem;font-weight:600}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{padding:3px 10px;background:var(--soft);color:var(--primary-dark);border-radius:999px;font-size:.78rem;font-weight:600}
 

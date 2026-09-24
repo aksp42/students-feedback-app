@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Feedback System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <span class="brand">Student Feedback System</span>
+      <span class="term">DevOps Assignment</span>
+    </div>
+  </header>
+
+  <main class="container layout">
+    <section class="card" aria-labelledby="form-title">
+      <h2 id="form-title">Submit your feedback</h2>
+      <p class="hint">All fields are required.</p>
+
+      {% if success %}
+      <div class="confirmation" role="status">{{ success }}</div>
+      {% endif %}
+      {% if error %}
+      <div class="alert" role="alert">{{ error }}</div>
+      {% endif %}
+
+      <form method="post" action="/" novalidate>
+        <div class="section">
+          <h3>Student information</h3>
+          <div class="row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" value="{{ submitted.get('name', '') }}">
+            </div>
+            <div class="field">
+              <label for="roll_no">Roll Number</label>
+              <input type="text" id="roll_no" name="roll_no" value="{{ submitted.get('roll_no', '') }}">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="email">Gmail / Email</label>
+              <input type="email" id="email" name="email" value="{{ submitted.get('email', '') }}">
+            </div>
+            <div class="field">
+              <label for="erp">ERP / ERP ID</label>
+              <input type="text" id="erp" name="erp" value="{{ submitted.get('erp', '') }}">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="student_class">Class</label>
+              <input type="text" id="student_class" name="student_class" value="{{ submitted.get('student_class', '') }}">
+            </div>
+            <div class="field">
+              <label for="section">Section</label>
+              <input type="text" id="section" name="section" value="{{ submitted.get('section', '') }}">
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Course feedback</h3>
+          <div class="field">
+            <label for="course">Course</label>
+            <input type="text" id="course" name="course" value="{{ submitted.get('course', '') }}">
+          </div>
+          <div class="field">
+            <label for="feedback">Feedback</label>
+            <textarea id="feedback" name="feedback" rows="5">{{ submitted.get('feedback', '') }}</textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="submit">Submit feedback</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="recent-title">
+      <div class="list-head">
+        <h2 id="recent-title">Submitted feedback</h2>
+        <p class="summary">{{ entries|length }} submission{{ '' if entries|length == 1 else 's' }}</p>
+      </div>
+
+      {% if not entries %}
+      <p class="empty">No feedback submitted yet.</p>
+      {% endif %}
+
+      <div class="feedback-list">
+        {% for entry in entries %}
+        <article class="feedback-card">
+          <div class="card-head">
+            <span class="avatar">{{ entry['name'][:1]|upper }}</span>
+            <div class="who">
+              <strong>{{ entry['name'] }}</strong>
+              <span>{{ entry['email'] }}</span>
+            </div>
+          </div>
+          <p class="card-course">{{ entry['course'] }} &middot; Sec {{ entry['section'] }}</p>
+          <ul class="meta">
+            <li>Roll: {{ entry['roll_no'] }}</li>
+            <li>ERP: {{ entry['erp'] }}</li>
+            <li>Class: {{ entry['student_class'] }}</li>
+            <li>Time: {{ entry['created_at'] }}</li>
+          </ul>
+          <p class="card-text">{{ entry['feedback'] }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container">Student Feedback System &mdash; Flask + SQLite demonstration.</div></footer>
+</body>
+</html>
