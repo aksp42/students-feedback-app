@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="StudentVoice - submit course feedback and read recent student reviews.">
+  <title>StudentVoice | Course Feedback Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="StudentVoice home">
+        <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2c3a94"/><path d="M8 10a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-6l-5 4v-4a3 3 0 0 1-2-3z" fill="#fff"/></svg>
+        <span>StudentVoice</span>
+      </a>
+      <span class="term">Academic year 2026&ndash;27</span>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="container">
+      <h1>Your feedback helps us improve learning.</h1>
+      <p>Tell us what worked and what did not in your courses. Faculty and the department review every response when planning teaching and course design.</p>
+    </div>
+  </section>
+
+  <main class="container layout">
+    <section class="card" aria-labelledby="form-title">
+      <h2 id="form-title">Course feedback form</h2>
+      <p class="hint">All fields are required unless marked optional. Takes about three minutes.</p>
+
+      <div class="confirmation" id="confirmation" role="status" aria-live="polite" hidden></div>
+
+      <form id="feedback-form" novalidate>
+        <div class="section">
+          <h3>Student information</h3>
+          <div class="row">
+            <div class="field" data-field="studentName">
+              <label for="studentName">Student name</label>
+              <input type="text" id="studentName" name="studentName" autocomplete="name" placeholder="e.g. Akanksha Singh">
+              <p class="error"></p>
+            </div>
+            <div class="field" data-field="studentId">
+              <label for="studentId">Student ID</label>
+              <input type="text" id="studentId" name="studentId" autocomplete="off" placeholder="e.g. 2401331540030">
+              <p class="error"></p>
+            </div>
+          </div>
+          <div class="field" data-field="email">
+            <label for="email">College email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="0241csds181@niet.co.in">
+            <p class="error"></p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Course information</h3>
+          <div class="row">
+            <div class="field" data-field="course">
+              <label for="course">Course</label>
+              <select id="course" name="course"></select>
+              <p class="error"></p>
+            </div>
+            <div class="field" data-field="semester">
+              <label for="semester">Semester</label>
+              <select id="semester" name="semester"></select>
+              <p class="error"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Your ratings</h3>
+          <fieldset class="field rating" data-field="overall"><legend>Overall course rating</legend><div class="stars" data-name="overall"></div><span class="rating-word"></span><p class="error"></p></fieldset>
+          <fieldset class="field rating" data-field="teaching"><legend>Teaching quality</legend><div class="stars" data-name="teaching"></div><span class="rating-word"></span><p class="error"></p></fieldset>
+          <fieldset class="field rating" data-field="content"><legend>Course content</legend><div class="stars" data-name="content"></div><span class="rating-word"></span><p class="error"></p></fieldset>
+          <fieldset class="field" data-field="difficulty"><legend>Course difficulty</legend><div class="chips" data-name="difficulty" data-options="Too Easy,Easy,Moderate,Difficult,Too Difficult"></div><p class="error"></p></fieldset>
+        </div>
+
+        <div class="section">
+          <h3>Written feedback</h3>
+          <div class="field" data-field="comments">
+            <label for="comments">Your comments</label>
+            <textarea id="comments" name="comments" rows="5" maxlength="500" placeholder="Share your experience with this course..."></textarea>
+            <div class="count-row"><p class="error"></p><span class="count" id="char-count">0 / 500 characters</span></div>
+          </div>
+          <fieldset class="field" data-field="recommend"><legend>Would you recommend this course to other students? (optional)</legend><div class="chips" data-name="recommend" data-options="Yes,Maybe,No"></div><p class="error"></p></fieldset>
+        </div>
+
+        <div class="section">
+          <label class="anon"><input type="checkbox" id="anonymous" name="anonymous"> <span>Submit feedback anonymously</span></label>
+          <p class="note" id="anonymous-note" hidden>Your name and student ID will not be displayed publicly.</p>
+          <button type="submit" class="submit">Submit feedback</button>
+          <p class="hint small">Your email is only used to verify your submission and is never shown on this page.</p>
+        </div>
+      </form>
+    </section>
+
+    <section aria-labelledby="recent-title">
+      <div class="list-head">
+        <div>
+          <h2 id="recent-title">Recent feedback</h2>
+          <p class="summary"><span id="summary-count">0 reviews</span> <span id="summary-average"></span></p>
+        </div>
+        <label class="filter"><span class="sr-only">Filter by course</span><select id="course-filter"></select></label>
+      </div>
+      <p class="empty" id="empty-state" hidden>No feedback for this course yet.</p>
+      <div class="feedback-list" id="feedback-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container">StudentVoice is a demonstration portal for a DevOps assignment. Submissions are stored only in your browser.</div></footer>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
